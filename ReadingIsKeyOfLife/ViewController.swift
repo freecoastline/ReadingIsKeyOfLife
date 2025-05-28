@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import IGListKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let bookTab = UITab(title: "Book", image: UIImage.init(systemName: "book.fill"), identifier: "book") { _ in
-            let bookViewController = UITableViewController()
+            let bookViewController = BookViewController()
             bookViewController.view.frame = CGRect(x: 0, y: 0, width: 400, height: 700)
             bookViewController.view.backgroundColor = .white
             return bookViewController
