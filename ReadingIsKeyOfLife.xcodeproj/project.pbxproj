@@ -10,6 +10,7 @@
 		BE70CAF22DE76E56007779A7 /* IGListDiffKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE70CAF12DE76E56007779A7 /* IGListDiffKit */; };
 		BE70CAF42DE76E56007779A7 /* IGListKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE70CAF32DE76E56007779A7 /* IGListKit */; };
 		BE70CAF62DE76E56007779A7 /* IGListSwiftKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE70CAF52DE76E56007779A7 /* IGListSwiftKit */; };
+		BE8079182DEA0D2600C08838 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE8079172DEA0D2600C08838 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE70CAF22DE76E56007779A7 /* IGListDiffKit in Frameworks */,
+				BE8079182DEA0D2600C08838 /* SnapKit in Frameworks */,
 				BE70CAF42DE76E56007779A7 /* IGListKit in Frameworks */,
 				BE70CAF62DE76E56007779A7 /* IGListSwiftKit in Frameworks */,
 			);
@@ -90,6 +92,7 @@
 				BE70CAF12DE76E56007779A7 /* IGListDiffKit */,
 				BE70CAF32DE76E56007779A7 /* IGListKit */,
 				BE70CAF52DE76E56007779A7 /* IGListSwiftKit */,
+				BE8079172DEA0D2600C08838 /* SnapKit */,
 			);
 			productName = ReadingIsKeyOfLife;
 			productReference = BEB492222DD9C48B006C762C /* ReadingIsKeyOfLife.app */;
@@ -121,6 +124,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				BE70CAF02DE76E56007779A7 /* XCRemoteSwiftPackageReference "IGListKit" */,
+				BE8079162DEA0D2600C08838 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BEB492232DD9C48B006C762C /* Products */;
@@ -358,6 +362,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		BE8079162DEA0D2600C08838 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -375,6 +387,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BE70CAF02DE76E56007779A7 /* XCRemoteSwiftPackageReference "IGListKit" */;
 			productName = IGListSwiftKit;
+		};
+		BE8079172DEA0D2600C08838 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE8079162DEA0D2600C08838 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

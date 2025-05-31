@@ -1,5 +1,5 @@
 {
-  "originHash" : "bd3cf05d8398c85831e56a0e0f6d072889f1e9d744a13ec336f00038e94fe74b",
+  "originHash" : "9e143be062c5f61e67911a28d17b37371f5b3d8434f85ff3aa5c5317e22e3a66",
   "pins" : [
     {
       "identity" : "iglistkit",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "baf38ea4d438ef3cc6c6deb8615e1910e03f02bb",
         "version" : "5.0.0"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "2842e6e84e82eb9a8dac0100ca90d9444b0307f4",
+        "version" : "5.7.1"
       }
     }
   ],
