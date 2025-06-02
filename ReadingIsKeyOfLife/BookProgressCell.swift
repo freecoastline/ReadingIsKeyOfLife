@@ -14,10 +14,12 @@ class BookProgressCell:UICollectionViewCell {
 
     func update(with model:BookProgressModel) {
         bookName.text = model.bookName
+        bookName.textAlignment = .center
         contentView.addSubview(bookName)
         bookName.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
+            make.edges.equalToSuperview()
         }
+        backgroundColor = .gray
     }
     
 }

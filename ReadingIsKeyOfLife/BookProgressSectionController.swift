@@ -18,7 +18,7 @@ class BookProgressSectionController:ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        CGSize(width: 100, height: 100)
+        CGSize(width: UIScreen.main.bounds.width, height: 100)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
@@ -30,10 +30,12 @@ class BookProgressSectionController:ListSectionController {
             return UICollectionViewCell()
         }
         cell.update(with: currentBook)
+        cell.layer.cornerRadius = 20
+        cell.layer.masksToBounds = true
         return cell
     }
 
     override func numberOfItems() -> Int {
-        1
+        10
     }
 }

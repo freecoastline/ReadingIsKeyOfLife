@@ -18,21 +18,39 @@ class BookFirstViewController:UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     private lazy var bookCollectionView:UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect(x: 100, y: 100, width: 200, height: 500), collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = .blue
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 20, height: 100)
+        let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
         return collectionView
     }()
     
     private lazy var progressViewModel = BookProgressViewModel()
     
-    override func viewDidLoad() {
+    private lazy var adapter:ListAdapter = {
         let updater = ListAdapterUpdater()
         let listAdapter = ListAdapter(updater: updater, viewController: self)
         listAdapter.collectionView = bookCollectionView
-        listAdapter.delegate = self
-        listAdapter.dataSource = self
+        return listAdapter
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(bookCollectionView)
+        adapter.delegate = self
+        adapter.dataSource = self
+        bookCollectionView.delegate = self
+        bookCollectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
+
+extension BookFirstViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+}
+
 
 extension BookFirstViewController: ListAdapterDelegate {
     func listAdapter(_ listAdapter: ListAdapter, willDisplay object: Any, at index: Int) {
