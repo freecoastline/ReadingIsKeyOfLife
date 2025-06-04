@@ -27,8 +27,8 @@ class BookProgressModel:ListDiffable {
     }
     
     let bookName:String = "tianlongbabu"
-    let currentPage:Int = 0
-    let pageCount:Int = 0
+    let currentPage:CGFloat = 2
+    let pageCount:CGFloat = 10
     var coverImage:UIImage?
     var bookType:BookType?
     let author:String = "ken.wu"
