@@ -29,7 +29,7 @@ class BookProgressModel:ListDiffable {
     let bookName:String = "tianlongbabu"
     let currentPage:CGFloat = 2
     let pageCount:CGFloat = 10
-    var coverImage:UIImage?
+    var coverImage = UIImage(systemName: "square.and.arrow.up")
     var bookType:BookType?
     let author:String = "ken.wu"
 }
