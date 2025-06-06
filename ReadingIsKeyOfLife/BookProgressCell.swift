@@ -18,8 +18,6 @@ class BookProgressCell:UICollectionViewCell {
         return imageView
     }()
     
-    var progressNumberLabel = UILabel()
-    var progressPercentLabel = UILabel()
     var bookType = UILabel()
     
     var spacer = UIView()
@@ -27,6 +25,8 @@ class BookProgressCell:UICollectionViewCell {
     
     var vstackView = UIStackView()
     var hstackView = UIStackView()
+    
+    var progressView:
     
     func update(with model:BookProgressModel) {
         bookName.text = model.bookName
@@ -45,8 +45,6 @@ class BookProgressCell:UICollectionViewCell {
         vstackView.addArrangedSubview(spacer)
         
         currentProgress = model.currentPage / model.pageCount
-        
-        
         
         coverImageView.image = model.coverImage
         coverImageView.snp.makeConstraints { make in
