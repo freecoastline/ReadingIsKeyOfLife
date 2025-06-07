@@ -50,6 +50,7 @@ class BookProgressCell:UICollectionViewCell {
         vstackView.alignment = .leading
         vstackView.axis = .vertical
         vstackView.addArrangedSubview(progressView)
+        vstackView.setCustomSpacing(12, after: progressView)
         vstackView.addArrangedSubview(spacer)
         
         coverImageView.image = model.coverImage

@@ -20,6 +20,7 @@ class BookProgressView:UIView {
     lazy var progressNumberLabel:UILabel = {
         let label = UILabel()
         label.text = String(currentPage) + "/" + String(totalPagesCount)
+        label.font = .systemFont(ofSize: 12)
         label.sizeToFit()
         return label
     }()
@@ -27,6 +28,7 @@ class BookProgressView:UIView {
     lazy var progressPercentLabel:UILabel = {
         let label = UILabel()
         label.text = String(percent) + "%"
+        label.font = .systemFont(ofSize: 12)
         label.sizeToFit()
         return label
     }()
