@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 class BookProgressCell:UICollectionViewCell {
+    var currentModel: BookProgressModel?
     var bookName = UILabel()
     var author = UILabel()
     var currentProgress = 0.0
@@ -25,10 +26,16 @@ class BookProgressCell:UICollectionViewCell {
     
     var vstackView = UIStackView()
     var hstackView = UIStackView()
-    
-    var progressView:
+
+    var progressView:UIView {
+        guard let currentModel else {
+            return UIView()
+        }
+        return BookProgressView(currentPage: currentModel.currentPage, totalPagesCount: currentModel.pageCount)
+    }
     
     func update(with model:BookProgressModel) {
+        currentModel = model
         bookName.text = model.bookName
         bookName.font = .systemFont(ofSize: 12, weight: .bold)
         bookName.sizeToFit()
@@ -42,9 +49,8 @@ class BookProgressCell:UICollectionViewCell {
         vstackView.setCustomSpacing(12, after: author)
         vstackView.alignment = .leading
         vstackView.axis = .vertical
+        vstackView.addArrangedSubview(progressView)
         vstackView.addArrangedSubview(spacer)
-        
-        currentProgress = model.currentPage / model.pageCount
         
         coverImageView.image = model.coverImage
         coverImageView.snp.makeConstraints { make in
