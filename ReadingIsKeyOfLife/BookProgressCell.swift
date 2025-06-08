@@ -8,41 +8,54 @@
 import Foundation
 import UIKit
 import SnapKit
+import Combine
 
 class BookProgressCell:UICollectionViewCell {
     var currentModel: BookProgressModel?
-    var bookName = UILabel()
-    var author = UILabel()
-    var currentProgress = 0.0
-    var coverImageView:UIImageView = {
+    var cancellable = Set<AnyCancellable>()
+    
+    lazy var bookName:UILabel = {
+        let label = UILabel()
+        label.text = "default bookname"
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var author:UILabel = {
+        let label = UILabel()
+        label.text = "default label"
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var coverImageView:UIImageView = {
         let imageView = UIImageView(frame: CGRectZero)
         return imageView
     }()
     
     var bookType = UILabel()
-    
     var spacer = UIView()
     var hspacer = UIView()
     
     var vstackView = UIStackView()
     var hstackView = UIStackView()
 
-    var progressView:UIView {
-        guard let currentModel else {
-            return UIView()
-        }
-        return BookProgressView(currentPage: currentModel.currentPage, totalPagesCount: currentModel.pageCount)
+    var progressView:BookProgressView {
+        BookProgressView(currentPage: currentModel?.currentPage ?? 0, totalPagesCount: currentModel?.pageCount ?? 0)
     }
     
-    func update(with model:BookProgressModel) {
-        currentModel = model
-        bookName.text = model.bookName
-        bookName.font = .systemFont(ofSize: 12, weight: .bold)
-        bookName.sizeToFit()
-        
-        author.text = model.author
-        author.font = .systemFont(ofSize: 8, weight: .medium)
-        author.sizeToFit()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupUI() {
         vstackView.addArrangedSubview(bookName)
         vstackView.setCustomSpacing(12, after: bookName)
         vstackView.addArrangedSubview(author)
@@ -52,8 +65,6 @@ class BookProgressCell:UICollectionViewCell {
         vstackView.addArrangedSubview(progressView)
         vstackView.setCustomSpacing(12, after: progressView)
         vstackView.addArrangedSubview(spacer)
-        
-        coverImageView.image = model.coverImage
         coverImageView.snp.makeConstraints { make in
             make.width.equalTo(80)
         }
@@ -64,8 +75,20 @@ class BookProgressCell:UICollectionViewCell {
         hstackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         backgroundColor = .gray
+        setupBinding()
     }
     
+    func setupBinding() {
+        
+    }
+    
+    func update(with model:BookProgressModel) {
+        currentModel = model
+        bookName.text = currentModel?.bookName
+        author.text = currentModel?.author
+        coverImageView.image = currentModel?.coverImage
+        progressView.currentPage = currentModel?.currentPage ?? 0
+        progressView.totalPagesCount = currentModel?.pageCount ?? 0
+    }
 }

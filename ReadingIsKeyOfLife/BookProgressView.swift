@@ -8,13 +8,16 @@
 import Foundation
 import UIKit
 
-class BookProgressView:UIView {
+public class BookProgressView:UIView {
     var currentPage:Int = 0
     var totalPagesCount:Int = 0
     let kProgressTotalLength = 200
     let kProgressTotalHeight = 30
     var percent:Int {
-        currentPage / totalPagesCount
+        guard totalPagesCount > 0 else {
+            return 0
+        }
+        return currentPage / totalPagesCount
     }
     
     lazy var progressNumberLabel:UILabel = {
