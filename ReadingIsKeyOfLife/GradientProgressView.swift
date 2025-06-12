@@ -9,17 +9,29 @@ import Foundation
 import UIKit
 
 class GradientProgressView: UIProgressView {
-    var firstColor: UIColor {
-        .black
+    var firstColor: UIColor = UIColor.white {
+        didSet {
+            updateView()
+        }
     }
     
-    var secondColor: UIColor {
-        .white
+    var secondColor: UIColor = UIColor.black {
+        didSet {
+            updateView()
+        }
     }
     
-    func updateView(by colors:[UIColor], bound: CGRect) {
-        let image = UIImage(colors, bounds: bound)
+    func updateView() {
+        let colors = [firstColor, secondColor]
+        if let currentGradientImage = UIImage(colors, bounds: self.bounds) {
+            self.progressImage = currentGradientImage
+        }
+        let image = UIImage(colors, bounds: self.bounds)
         self.progressImage = image
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {

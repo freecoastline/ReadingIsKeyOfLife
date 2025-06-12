@@ -18,7 +18,7 @@ class BookProgressSectionController:ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width, height: 100)
+        CGSize(width: UIScreen.main.bounds.width, height: 300)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {

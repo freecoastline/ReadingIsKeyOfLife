@@ -42,8 +42,9 @@ class BookProgressCell:UICollectionViewCell {
     var vstackView = UIStackView()
     var hstackView = UIStackView()
 
-    var progressView:BookProgressView {
-        BookProgressView(currentPage: currentModel?.currentPage ?? 0, totalPagesCount: currentModel?.pageCount ?? 0)
+    var progressView:GradientProgressView {
+        //BookProgressView(currentPage: currentModel?.currentPage ?? 0, totalPagesCount: currentModel?.pageCount ?? 0)
+        GradientProgressView(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
     }
     
     override init(frame: CGRect) {
@@ -88,7 +89,9 @@ class BookProgressCell:UICollectionViewCell {
         bookName.text = currentModel?.bookName
         author.text = currentModel?.author
         coverImageView.image = currentModel?.coverImage
-        progressView.currentPage = currentModel?.currentPage ?? 0
-        progressView.totalPagesCount = currentModel?.pageCount ?? 0
+        progressView.firstColor = .black
+        progressView.secondColor = .white
+//        progressView.currentPage = currentModel?.currentPage ?? 0
+//        progressView.totalPagesCount = currentModel?.pageCount ?? 0
     }
 }
