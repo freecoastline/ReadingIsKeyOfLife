@@ -42,10 +42,7 @@ class BookProgressCell:UICollectionViewCell {
     var vstackView = UIStackView()
     var hstackView = UIStackView()
 
-    var progressView:GradientProgressView {
-        //BookProgressView(currentPage: currentModel?.currentPage ?? 0, totalPagesCount: currentModel?.pageCount ?? 0)
-        GradientProgressView(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
-    }
+    lazy var progressView = GradientProgressView(progressViewStyle: .bar)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,14 +58,19 @@ class BookProgressCell:UICollectionViewCell {
         vstackView.setCustomSpacing(12, after: bookName)
         vstackView.addArrangedSubview(author)
         vstackView.setCustomSpacing(12, after: author)
-        vstackView.alignment = .leading
-        vstackView.axis = .vertical
         vstackView.addArrangedSubview(progressView)
         vstackView.setCustomSpacing(12, after: progressView)
-        vstackView.addArrangedSubview(spacer)
+        vstackView.addSubview(spacer)
+        vstackView.alignment = .leading
+        vstackView.axis = .vertical
         coverImageView.snp.makeConstraints { make in
             make.width.equalTo(80)
         }
+        progressView.snp.makeConstraints { make in
+            make.height.equalTo(20)
+            make.leading.trailing.equalToSuperview()
+        }
+        progressView.backgroundColor = .blue
         hstackView.addArrangedSubview(coverImageView)
         hstackView.addArrangedSubview(vstackView)
         hstackView.addArrangedSubview(hspacer)
@@ -89,8 +91,6 @@ class BookProgressCell:UICollectionViewCell {
         bookName.text = currentModel?.bookName
         author.text = currentModel?.author
         coverImageView.image = currentModel?.coverImage
-        progressView.firstColor = .black
-        progressView.secondColor = .white
 //        progressView.currentPage = currentModel?.currentPage ?? 0
 //        progressView.totalPagesCount = currentModel?.pageCount ?? 0
     }
