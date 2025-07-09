@@ -55,12 +55,9 @@ class BookProgressCell:UICollectionViewCell {
     
     func setupUI() {
         vstackView.addArrangedSubview(bookName)
-        vstackView.setCustomSpacing(12, after: bookName)
         vstackView.addArrangedSubview(author)
-        vstackView.setCustomSpacing(12, after: author)
         vstackView.addArrangedSubview(progressView)
-        vstackView.setCustomSpacing(12, after: progressView)
-        vstackView.addSubview(spacer)
+        
         vstackView.alignment = .leading
         vstackView.axis = .vertical
         coverImageView.snp.makeConstraints { make in
