@@ -14,7 +14,7 @@ class BookSecondViewController:UIViewController {
         label.text = "ken"
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.2
+        label.minimumScaleFactor = 0.1
         return label
     }()
     override func viewDidLoad() {
