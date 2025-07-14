@@ -27,13 +27,31 @@ class BookProgressCell:UICollectionViewCell {
         label.text = "default label"
         label.font = .systemFont(ofSize: 12, weight: .bold)
         label.sizeToFit()
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(progressUpdate)))
         return label
     }()
     
     lazy var coverImageView:UIImageView = {
         let imageView = UIImageView(frame: CGRectZero)
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(progressUpdate)))
         return imageView
     }()
+    
+    var progressValue:Float = 0.0 {
+        didSet {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
+                guard let self else {
+                    return
+                }
+                self.progressView.setProgress(progressValue, animated: true)
+            }
+        }
+    }
+    
+    @objc
+    func progressUpdate() {
+        progressValue += 0.2
+    }
     
     var bookType = UILabel()
     var spacer = UIView()
@@ -88,6 +106,7 @@ class BookProgressCell:UICollectionViewCell {
         bookName.text = currentModel?.bookName
         author.text = currentModel?.author
         coverImageView.image = currentModel?.coverImage
+
 //        progressView.currentPage = currentModel?.currentPage ?? 0
 //        progressView.totalPagesCount = currentModel?.pageCount ?? 0
     }
