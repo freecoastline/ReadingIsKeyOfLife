@@ -50,7 +50,7 @@ class BookProgressCell:UICollectionViewCell {
     
     @objc
     func progressUpdate() {
-        progressValue += 0.2
+        progressValue += 0.3
     }
     
     var bookType = UILabel()
